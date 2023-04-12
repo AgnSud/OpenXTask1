@@ -87,6 +87,30 @@ public class Main {
         return !testTree.isEqual(testTree.getRoot(), treeWithSameShapeButDiffValues.getRoot());
     }
 
+    private static boolean fifthTestOfEqualityOfTrees(){
+        int[] values1 = {0, 1, 2, 3, 4, 5};
+        int[] idOfParents1 = {-1, 0, 1, 1, 3, 3};
+
+        int[] values2 = {0, 1, 2, 4, 5, 3};
+        int[] idOfParents2 = {-1, 0, 1, 2, 2, 1};
+
+        Tree tree1 = createTree(values1, idOfParents1);
+        Tree tree2 = createTree(values2, idOfParents2);
+
+        return !tree1.isEqual(tree1.getRoot(), tree2.getRoot());
+    }
+
+    private static boolean sixthTestOfEqualityOfTrees(){
+        int[] values = {1, 1, 1, 1, 1};
+        int[] idOfParents1 = {-1, 0, 0, 1, 1};
+        int[] idOfParents2 = {-1, 0, 1, 0, 3};
+
+        Tree tree1 = createTree(values, idOfParents1);
+        Tree tree2 = createTree(values, idOfParents2);
+
+        return !tree1.isEqual(tree1.getRoot(), tree2.getRoot());
+    }
+
 
     public static void main(String[] args) {
 //        tree in next test: 5 - 7 - 0 - 8 - 5
@@ -142,5 +166,23 @@ public class Main {
 //                                 - 5
         System.out.println("Test of equality of trees with same shape, but different values of nodes (should not be equal): " +
                 (fourthTestOfEqualityOfTrees(testTree, idOfParents1) ? "passed" : "NOT PASSED"));
+
+//        tree1 in next test: 0 - 1 - 3 - 4
+//                                      - 5
+//                                  - 2
+//        tree1 in next test: 0 - 1 - 3
+//                                  - 2 - 5
+//                                      - 4
+        System.out.println("Test of equality of trees with same shape, but different children (should not be equal): " +
+                (fifthTestOfEqualityOfTrees() ? "passed" : "NOT PASSED"));
+
+//        tree1 in next test: 1 - 1
+//                              - 1 - 1
+//                                  - 1
+//        tree1 in next test: 1 - 1 - 1
+//                              - 1 - 1
+        System.out.println("Test of equality of trees with same values of every node, but different size (should not be equal): " +
+                (sixthTestOfEqualityOfTrees() ? "passed" : "NOT PASSED"));
+
     }
 }
